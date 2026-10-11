@@ -237,9 +237,9 @@ $('unit').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)
 IDS.forEach(id=>$(id).addEventListener('input',calc));
 const fmtLap=v=>{v=Math.round(v*1000)/1000;const m=Math.floor(v/60),r=v-m*60;return m+':'+(r<10?'0':'')+r.toFixed(3)};
 const cfg={
- race:{get step(){return unit==='h'?1:5},min:1,get:()=>parseRace($('race').value)/(unit==='h'?3600:60),set:v=>String(Math.round(v*100)/100)},
+ race:{step:1,min:1,get:()=>parseRace($('race').value)/(unit==='h'?3600:60),set:v=>String(Math.round(v*100)/100)},
  lap:{step:0.1,min:1,get:()=>parseLap($('lap').value),set:fmtLap},
- cons:{step:0.05,min:0.05,get:()=>num($('cons').value),set:v=>v.toFixed(2)},
+ cons:{step:0.01,min:0.01,get:()=>num($('cons').value),set:v=>v.toFixed(2)},
  tank:{step:1,min:1,get:()=>num($('tank').value),set:v=>String(Math.round(v*10)/10)},
  pit:{step:1,min:0,get:()=>num($('pit').value),set:v=>String(Math.round(v*10)/10)},
  res:{step:0.5,min:0,get:()=>num($('res').value),set:v=>String(Math.round(v*100)/100)}
